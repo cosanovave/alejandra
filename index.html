@@ -633,6 +633,103 @@
     .about-item h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); }
     .about-item p  { font-size: 0.85rem; color: var(--gray); margin-top: 2px; line-height: 1.6; }
 
+    /* ============ ABOUT EXTENDED ============ */
+    .about-extended-block { margin-top: 72px; }
+    .about-sub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .about-sub-title span { color: var(--primary); }
+    .about-section-intro {
+      text-align: center;
+      color: var(--gray);
+      max-width: 620px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* Duality */
+    .duality-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .duality-card {
+      background: var(--gradient-soft);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border-left: 4px solid var(--primary);
+    }
+    .duality-icon {
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+    .duality-card h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .duality-card p  { font-size: 0.88rem; color: var(--gray); line-height: 1.75; }
+
+    /* Formation */
+    .formation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .formation-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .formation-icon {
+      width: 44px; height: 44px; min-width: 44px;
+      background: var(--gradient);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.1rem;
+    }
+    .formation-item h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .formation-item p  { font-size: 0.82rem; color: var(--gray); line-height: 1.55; }
+
+    /* Services overview */
+    .services-overview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-overview-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--primary);
+      transition: var(--transition);
+    }
+    .service-overview-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .service-overview-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .service-overview-card p  { font-size: 0.82rem; color: var(--gray); line-height: 1.65; }
+    .service-ov-icon {
+      width: 40px; height: 40px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary-dark); font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    /* Quote */
+    .about-quote {
+      background: var(--gradient);
+      border-radius: var(--radius);
+      padding: 52px 60px;
+      text-align: center;
+      color: white;
+    }
+    .about-quote .fa-quote-left { font-size: 2.2rem; opacity: 0.35; margin-bottom: 20px; display: block; }
+    .about-quote blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.85;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .about-quote cite { font-size: 0.9rem; font-weight: 600; opacity: 0.8; letter-spacing: 0.05em; }
+
     /* ============ SERVICES ============ */
     .services { background: rgba(248,245,240,0.91); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 
@@ -1477,6 +1574,11 @@
       .hero-stats { justify-content: center; }
       .about-grid { grid-template-columns: 1fr; }
       .about-image-wrap { max-width: 500px; margin: 0 auto; }
+      .duality-grid { grid-template-columns: 1fr; }
+      .formation-grid { grid-template-columns: 1fr; }
+      .services-overview-grid { grid-template-columns: 1fr; }
+      .about-quote { padding: 36px 24px; }
+      .about-quote blockquote p { font-size: 1rem; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-divider { display: none; }
@@ -1702,6 +1804,110 @@
           </a>
         </div>
       </div>
+
+      <!-- La Dualidad como Valor Diferencial -->
+      <div class="about-extended-block">
+        <h3 class="about-sub-title reveal">La Dualidad como <span>Valor Diferencial</span></h3>
+        <p class="about-section-intro reveal delay-1">A diferencia de los enfoques convencionales, la Dra. Pérez integra sus dos áreas de experticia para ofrecer una atención transversal.</p>
+        <div class="duality-grid">
+          <div class="duality-card reveal from-left">
+            <div class="duality-icon"><i class="fas fa-stethoscope"></i></div>
+            <h4>De la Medicina General a la Estética</h4>
+            <p>Cada consulta clínica incluye una visión preventiva que considera cómo el estado de salud interno se refleja en la apariencia física.</p>
+          </div>
+          <div class="duality-card reveal from-right">
+            <div class="duality-icon"><i class="fas fa-spa"></i></div>
+            <h4>De la Estética a la Salud Integral</h4>
+            <p>Todo procedimiento estético cuenta con el respaldo de un diagnóstico médico riguroso, garantizando que cada intervención sea segura y coherente con el historial clínico del paciente.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formación Académica y Especialización -->
+      <div class="about-extended-block">
+        <h3 class="about-sub-title reveal">Formación Académica y <span>Especialización</span></h3>
+        <p class="about-section-intro reveal delay-1">Su compromiso con la excelencia se refleja en una formación continua en instituciones de prestigio internacional.</p>
+        <div class="formation-grid">
+          <div class="formation-item reveal delay-1">
+            <div class="formation-icon"><i class="fas fa-university"></i></div>
+            <div>
+              <h4>Licenciada en Medicina General</h4>
+              <p>Universidad Nacional Experimental de los Llanos "Rómulo Gallegos"</p>
+            </div>
+          </div>
+          <div class="formation-item reveal delay-2">
+            <div class="formation-icon"><i class="fas fa-award"></i></div>
+            <div>
+              <h4>Máster de Formación Permanente en Medicina Estética</h4>
+              <p>Universidad Antonio de Nebrija</p>
+            </div>
+          </div>
+          <div class="formation-item reveal delay-3">
+            <div class="formation-icon"><i class="fas fa-syringe"></i></div>
+            <div>
+              <h4>Especialización en Implante de Rellenos</h4>
+              <p>Avalada por la Sociedad Española de Medicina Estética (SEME)</p>
+            </div>
+          </div>
+          <div class="formation-item reveal delay-4">
+            <div class="formation-icon"><i class="fas fa-heart-pulse"></i></div>
+            <div>
+              <h4>Especialista en Salud Vascular y Dérmica</h4>
+              <p>Formación avanzada en escleroterapia y rellenos dérmicos por Infante Academy e Ikeys</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicios de Medicina Estética Avanzada -->
+      <div class="about-extended-block">
+        <h3 class="about-sub-title reveal">Servicios de Medicina Estética <span>Avanzada</span></h3>
+        <p class="about-section-intro reveal delay-1">Bajo un modelo de resultados naturales y armónicos, soluciones integrales para la salud de la piel y el cuerpo.</p>
+        <div class="services-overview-grid">
+          <div class="service-overview-card reveal delay-1">
+            <div class="service-ov-icon"><i class="fas fa-wand-sparkles"></i></div>
+            <h4>Rejuvenecimiento y Eliminación de Arrugas</h4>
+            <p>Tratamientos diseñados para suavizar líneas de expresión y arrugas profundas, restaurando una apariencia descansada sin perder la naturalidad gestual.</p>
+          </div>
+          <div class="service-overview-card reveal delay-2">
+            <div class="service-ov-icon"><i class="fas fa-droplet"></i></div>
+            <h4>Armonización con Rellenos y Bioestimulación</h4>
+            <p>Uso experto de ácido hialurónico e inductores de colágeno para recuperar volúmenes, definir contornos y mejorar la firmeza cutánea desde su estructura interna.</p>
+          </div>
+          <div class="service-overview-card reveal delay-3">
+            <div class="service-ov-icon"><i class="fas fa-sun"></i></div>
+            <h4>Renovación Cutánea y Eliminación de Manchas</h4>
+            <p>Protocolos de vanguardia para unificar el tono de la piel y corregir imperfecciones causadas por el sol o el envejecimiento.</p>
+          </div>
+          <div class="service-overview-card reveal delay-1">
+            <div class="service-ov-icon"><i class="fas fa-leaf"></i></div>
+            <h4>Higiene Médica y Detoxicación Facial</h4>
+            <p>Limpiezas profundas diseñadas para extraer impurezas, hidratar y oxigenar los tejidos, optimizando la salud celular del rostro.</p>
+          </div>
+          <div class="service-overview-card reveal delay-2">
+            <div class="service-ov-icon"><i class="fas fa-heart-pulse"></i></div>
+            <h4>Salud Vascular — Escleroterapia</h4>
+            <p>Tratamiento médico especializado para la eliminación de venas varicosas, mejorando la circulación y la estética de las piernas.</p>
+          </div>
+          <div class="service-overview-card reveal delay-3">
+            <div class="service-ov-icon"><i class="fas fa-person"></i></div>
+            <h4>Protocolos Corporales Integrativos</h4>
+            <p>Soluciones de remodelación y tonificación que adaptan la tecnología estética a las necesidades fisiológicas de cada persona.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filosofía -->
+      <div class="about-extended-block">
+        <div class="about-quote reveal scale-in">
+          <blockquote>
+            <i class="fas fa-quote-left"></i>
+            <p>"Mi objetivo no es solo tratar un motivo de consulta, sino cuidar a la persona en su totalidad. Ya sea que acudas por una necesidad clínica o un deseo estético, mi compromiso es que encuentres un equilibrio donde tu salud sea el fundamento de tu belleza."</p>
+            <cite>— Dra. Alejandra Pérez</cite>
+          </blockquote>
+        </div>
+      </div>
+
     </div>
   </section>
 
