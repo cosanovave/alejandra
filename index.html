@@ -1370,6 +1370,67 @@
       font-size: 0.82rem;
     }
 
+    /* ============ AVISO LEGAL MODAL ============ */
+    .legal-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .legal-modal-overlay.open { display: flex; }
+    .legal-modal {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      color: #1a2340;
+    }
+    .legal-modal h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; color: var(--navy); }
+    .legal-modal h3 { font-size: 1rem; font-weight: 700; margin: 24px 0 8px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
+    .legal-modal p, .legal-modal li { font-size: 0.9rem; line-height: 1.7; color: #444; }
+    .legal-modal ul { padding-left: 18px; margin: 0; }
+    .legal-modal ul li { margin-bottom: 6px; }
+    .legal-modal .legal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #aaa;
+      line-height: 1;
+    }
+    .legal-modal .legal-close:hover { color: var(--navy); }
+    .legal-modal hr { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+    .legal-disclaimer {
+      background: #fff8f0;
+      border-left: 3px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .footer-legal-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-legal-links button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.82rem;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+    .footer-legal-links button:hover { color: rgba(255,255,255,0.9); }
+
     /* ============ WHATSAPP FLOAT ============ */
     .wa-float {
       position: fixed;
@@ -3224,9 +3285,84 @@
     </div>
     <div class="footer-bottom">
       <span>© 2025 Consultorio Médico Dra. Alejandra Pérez · Todos los derechos reservados</span>
-      <span>Las Palmas de Gran Canaria, España</span>
+      <div class="footer-legal-links">
+        <button onclick="document.getElementById('avisoLegalModal').classList.add('open')">Aviso Legal</button>
+        <span style="color:rgba(255,255,255,0.2)">|</span>
+        <button onclick="document.getElementById('privacidadModal').classList.add('open')">Política de Privacidad</button>
+      </div>
     </div>
   </footer>
+
+  <!-- AVISO LEGAL MODAL -->
+  <div class="legal-modal-overlay" id="avisoLegalModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="legal-modal">
+      <button class="legal-close" onclick="document.getElementById('avisoLegalModal').classList.remove('open')">&times;</button>
+      <h2>Aviso Legal</h2>
+      <p style="font-size:0.82rem;color:#999;">En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE)</p>
+      <hr>
+
+      <h3>Datos del titular</h3>
+      <ul>
+        <li><strong>Nombre:</strong> Alejandra Vanessa Pérez López</li>
+        <li><strong>NIF:</strong> 60503428L</li>
+        <li><strong>Domicilio:</strong> Calle Fernando Guanarteme Nº 1, Cruce de Sardina, Vecindario, C.P. 35110, Las Palmas de Gran Canaria</li>
+        <li><strong>Email:</strong> <a href="mailto:dra.alejandravperez@gmail.com" style="color:var(--primary)">dra.alejandravperez@gmail.com</a></li>
+        <li><strong>Teléfono:</strong> +34 613 27 90 68</li>
+      </ul>
+
+      <h3>Datos de colegiación</h3>
+      <ul>
+        <li><strong>Número de colegiación:</strong> 353509008</li>
+        <li><strong>Colegio Oficial:</strong> Colegio de Médicos de Las Palmas</li>
+      </ul>
+
+      <h3>Autorización sanitaria</h3>
+      <ul>
+        <li><strong>Número de autorización sanitaria:</strong> 9169 (Consejería de Sanidad del Gobierno de Canarias)</li>
+        <li><strong>Especialidades autorizadas:</strong> U.1 Medicina General / de Familia · U48 Medicina Estética</li>
+      </ul>
+
+      <h3>Publicidad sanitaria</h3>
+      <div class="legal-disclaimer">
+        La información contenida en esta web tiene carácter meramente informativo y no constituye una promesa de resultados. Los resultados de los tratamientos pueden variar en función de cada paciente. En cumplimiento del Real Decreto 1907/1996, de 2 de agosto, sobre publicidad y promoción comercial de productos, actividades o servicios con pretendida finalidad sanitaria, este sitio web no realiza afirmaciones de curación ni garantiza resultados específicos.
+      </div>
+
+      <h3>Propiedad intelectual</h3>
+      <p>Los contenidos de este sitio web, incluyendo textos, imágenes y diseño, son propiedad de Alejandra Vanessa Pérez López o se utilizan con autorización. Queda prohibida su reproducción total o parcial sin consentimiento expreso.</p>
+    </div>
+  </div>
+
+  <!-- POLÍTICA DE PRIVACIDAD MODAL -->
+  <div class="legal-modal-overlay" id="privacidadModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="legal-modal">
+      <button class="legal-close" onclick="document.getElementById('privacidadModal').classList.remove('open')">&times;</button>
+      <h2>Política de Privacidad</h2>
+      <p style="font-size:0.82rem;color:#999;">En cumplimiento del Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos (LOPDGDD)</p>
+      <hr>
+
+      <h3>Responsable del tratamiento</h3>
+      <ul>
+        <li><strong>Responsable:</strong> Alejandra Vanessa Pérez López</li>
+        <li><strong>NIF:</strong> 60503428L</li>
+        <li><strong>Email:</strong> <a href="mailto:dra.alejandravperez@gmail.com" style="color:var(--primary)">dra.alejandravperez@gmail.com</a></li>
+      </ul>
+
+      <h3>Finalidad del tratamiento</h3>
+      <p>Los datos facilitados a través del formulario de contacto o por WhatsApp se utilizan exclusivamente para gestionar citas, consultas y comunicaciones relacionadas con los servicios médicos ofrecidos.</p>
+
+      <h3>Legitimación</h3>
+      <p>El tratamiento de sus datos se basa en su consentimiento expreso y en la ejecución de la relación asistencial (Art. 6.1.b y 6.1.a RGPD).</p>
+
+      <h3>Conservación</h3>
+      <p>Los datos se conservarán mientras dure la relación asistencial y durante los plazos legalmente exigidos para historia clínica (mínimo 5 años según normativa sanitaria canaria).</p>
+
+      <h3>Derechos</h3>
+      <p>Puede ejercer sus derechos de acceso, rectificación, supresión, oposición y portabilidad escribiendo a <a href="mailto:dra.alejandravperez@gmail.com" style="color:var(--primary)">dra.alejandravperez@gmail.com</a>. También puede reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+
+      <h3>Confidencialidad</h3>
+      <p>Los datos de salud tienen carácter especialmente protegido. No se cederán a terceros salvo obligación legal o con su consentimiento expreso.</p>
+    </div>
+  </div>
 
   <!-- WHATSAPP FLOAT -->
   <a href="https://wa.me/34613279068?text=Hola%20Dra.%20Alejandra%2C%20me%20gustar%C3%ADa%20pedir%20una%20cita" target="_blank" class="wa-float" aria-label="Pedir cita por WhatsApp">
