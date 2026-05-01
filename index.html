@@ -253,6 +253,78 @@
     .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(122,158,126,0.5) !important; }
     .nav-cta::after { display: none !important; }
 
+    /* ---- Dropdown ---- */
+    .has-dropdown { position: relative; }
+    .has-dropdown > a { display: flex !important; align-items: center; gap: 5px; }
+    .has-dropdown > a .fa-chevron-down { font-size: 0.62rem; transition: transform 0.25s; }
+    .has-dropdown:hover > a .fa-chevron-down { transform: rotate(180deg); }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(74,60,40,0.20);
+      min-width: 290px;
+      max-height: 440px;
+      overflow-y: auto;
+      padding: 8px 0;
+      z-index: 3000;
+      border-top: 3px solid var(--primary);
+    }
+    .has-dropdown:hover .dropdown { display: block; }
+    .dropdown a {
+      display: block !important;
+      padding: 9px 20px !important;
+      font-size: 0.76rem !important;
+      font-weight: 500 !important;
+      color: var(--navy) !important;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .dropdown a:hover { background: var(--primary-light) !important; color: var(--primary-dark) !important; }
+    .dropdown a::after { display: none !important; }
+
+    /* Sub-dropdown flyout */
+    .has-subdrop { position: relative; }
+    .drop-category {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 20px;
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      color: var(--primary-dark) !important;
+      background: var(--primary-light);
+      cursor: default;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .has-subdrop:hover .drop-category { background: #cfe0cf; }
+    .drop-category .fa-chevron-right { font-size: 0.6rem; margin-left: 8px; }
+    .drop-category::after { display: none !important; }
+    .subdropdown {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(74,60,40,0.22);
+      min-width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 8px 0;
+      z-index: 3001;
+      border-top: 3px solid var(--primary);
+    }
+    .has-subdrop:hover .subdropdown { display: block; }
+    .drop-divider { height: 1px; background: var(--primary-light); margin: 4px 12px; }
+
     .hamburger {
       display: none;
       flex-direction: column;
@@ -1367,6 +1439,34 @@
       color: var(--navy);
       cursor: pointer;
     }
+    .mobile-cat-btn {
+      background: none; border: none;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--navy); cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      display: flex; align-items: center; gap: 8px;
+      transition: color 0.3s;
+    }
+    .mobile-cat-btn:hover { color: var(--primary-dark); }
+    .mobile-cat-btn .fa-chevron-down { font-size: 0.8rem; transition: transform 0.25s; }
+    .mobile-cat-btn.open .fa-chevron-down { transform: rotate(180deg); }
+    .mobile-submenu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      max-height: 50vh;
+      overflow-y: auto;
+      padding: 8px 0;
+    }
+    .mobile-submenu.open { display: flex; }
+    .mobile-submenu a {
+      font-size: 0.85rem !important;
+      font-weight: 500 !important;
+      color: var(--gray) !important;
+      letter-spacing: 0.04em;
+    }
+    .mobile-submenu a:hover { color: var(--primary-dark) !important; }
 
     /* ============ EQUIPO ============ */
     .team { background: rgba(248,245,240,0.91); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
@@ -1662,7 +1762,214 @@
     <ul class="nav-links">
       <li><a href="#sobre-mi">Sobre mí</a></li>
       <li><a href="#equipo">Equipo</a></li>
-      <li><a href="#servicios">Servicios</a></li>
+
+      <!-- MEDICINA GENERAL -->
+      <li class="has-dropdown">
+        <a href="#servicios">MEDICINA GENERAL <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#servicios">CERTIFICADO MÉDICO OFICIAL</a>
+          <a href="#servicios">CONSULTA DE MEDICINA GENERAL</a>
+          <a href="#servicios">ELECTROCARDIOGRAMA (ECG)</a>
+          <a href="#servicios">INYECCIÓN ENDOVENOSA</a>
+          <a href="#servicios">INYECCIÓN INTRAMUSCULAR</a>
+          <a href="#servicios">LAVADO DE OÍDOS</a>
+          <a href="#servicios">NEBULIZACIÓN</a>
+          <a href="#servicios">RECETAS MÉDICAS PROFESIONALES</a>
+        </div>
+      </li>
+
+      <!-- MEDICINA ESTÉTICA -->
+      <li class="has-dropdown">
+        <a href="#servicios">MEDICINA ESTÉTICA <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <!-- Tratamientos directos (sin subcarpeta) -->
+          <a href="#servicios">CONSULTA DE MEDICINA ESTÉTICA</a>
+          <a href="#servicios">Eliminación de Verrugas con Plasma</a>
+          <a href="#servicios">Limpieza Profunda de Espalda</a>
+          <a href="#servicios">TRATAMIENTO PARA EL ACNÉ</a>
+          <div class="drop-divider"></div>
+          <!-- Categorías con flyout -->
+          <div class="has-subdrop">
+            <div class="drop-category">ACIDO HIALURONICO <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">AUMENTO DE PÓMULOS</a>
+              <a href="#servicios">MARCACIÓN MANDIBULAR CON ÁCIDO HIALURÓNICO</a>
+              <a href="#servicios">OJERAS HUNDIDAS (RELLENO CON ÁCIDO)</a>
+              <a href="#servicios">Proyección y Remodelación de Glúteos Ácido Hialurónico</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">BIOESTIMULACIÓN DE COLÁGENO <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">AestheFill bioestimulador de Colágeno</a>
+              <a href="#servicios">Facetem (1 vial de 1,6 ml)</a>
+              <a href="#servicios">Facetem + skinbooster</a>
+              <a href="#servicios">Radiesse (2 viales)</a>
+              <a href="#servicios">Radiesse 1,5</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">DEPILACION LASER FEMENINA <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">DEPILACIÓN LÁSER FEMENINA ZONA L</a>
+              <a href="#servicios">DEPILACIÓN LÁSER FEMENINA ZONA M, SUELTAS</a>
+              <a href="#servicios">DEPILACIÓN LÁSER FEMENINA ZONA S, SUELTAS</a>
+              <a href="#servicios">DEPILACIÓN LÁSER FEMENINA ZONA XS, SUELTAS</a>
+              <a href="#servicios">DEPILACIÓN LÁSER MUJER CUERPO COMPLETO</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">DEPILACION LASER MASCULINA <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">DEPILACION LASER HOMBRE MEDIO CUERPO INFERIOR</a>
+              <a href="#servicios">DEPILACIÓN LÁSER HOMBRE CUERPO COMPLETO</a>
+              <a href="#servicios">DEPILACIÓN LÁSER HOMBRE MEDIO CUERPO SUPERIOR</a>
+              <a href="#servicios">DEPILACIÓN LÁSER MASCULINA ZONA L</a>
+              <a href="#servicios">DEPILACIÓN LÁSER MASCULINA ZONA M</a>
+              <a href="#servicios">DEPILACIÓN LÁSER MASCULINA ZONA S</a>
+              <a href="#servicios">DEPILACIÓN LÁSER MASCULINA ZONA XL</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">ELECTROESTIMULADOR <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Electroestimulador (20 min)</a>
+              <a href="#servicios">Electroestimulador (40 min)</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">EXFOLIACION CORPORAL <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Exfoliación Corporal</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">HIDRATACION PROFUNDA <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">BIOREVITALIZANTE - BIOESTIMULANTE</a>
+              <a href="#servicios">Exosomas</a>
+              <a href="#servicios">Mesobotox</a>
+              <a href="#servicios">Skinboosters™ Restylane</a>
+              <a href="#servicios">SKINBOOSTER</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">LIMPIEZA FACIAL <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Limpieza Facial Básica</a>
+              <a href="#servicios">Limpieza Facial Enriquecida</a>
+              <a href="#servicios">Limpieza Facial Profunda</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">MADEROTERAPIA <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Maderoterapia Facial</a>
+              <a href="#servicios">MADEROTERAPIA</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">MASAJES <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Bono 5 sesiones Drenaje linfático zonas</a>
+              <a href="#servicios">Drenaje linfático corporal</a>
+              <a href="#servicios">Drenaje linfático facial</a>
+              <a href="#servicios">Lifting facial</a>
+              <a href="#servicios">Masaje deportivo</a>
+              <a href="#servicios">MASAJE POSTOPERATORIO</a>
+              <a href="#servicios">Masaje Reductivo</a>
+              <a href="#servicios">Masaje Relajante Antiestrés</a>
+              <a href="#servicios">MASAJES</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">MESOTERAPIA <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Mesoterapia Facial (Intradérmica)</a>
+              <a href="#servicios">MESOTERAPIA LIPOLÍTICA CORPORAL</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">MICRONEEDLING <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Microneedling Facial – Renueva tu piel</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">PEELING DE CARBONO <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">HOLLYWOOD PEEL</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">PEELING QUIMICO <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Peeling químico Fenol</a>
+              <a href="#servicios">Peeling Químico</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">PRP FACTORES DE CRECIMIENTO <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">FACTORES DE CRECIMIENTO</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">RADIOFRECUENCIA-CAVITACION-VACUMTERAPIA <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Cavitación y Radiofrecuencia</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">RELLENOS DERMICOS <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">AUMENTO DE LABIOS</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">SERVICIOS <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">ASEGURADORAS – CONSULTA MEDICINA GENERAL</a>
+              <a href="#servicios">Bono 10 sesiones de drenajes linfáticos por zona</a>
+              <a href="#servicios">CONSULTA PÉRDIDA DE PESO</a>
+              <a href="#servicios">DEPILACIÓN LÁSER FEMENINA ZONA XS, SUELTAS</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">TRATAMIENDO ANTIARRUGAS - BOTOX <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">Entrecejo</a>
+              <a href="#servicios">Nefertiti</a>
+              <a href="#servicios">Patas de gallo</a>
+              <a href="#servicios">Sonrisa gingival</a>
+              <a href="#servicios">Tercio superior</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">TRATAMIENTO CAPILAR <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">EXOSOMAS CAPILAR</a>
+              <a href="#servicios">Mesoterapia Capilar</a>
+              <a href="#servicios">PRP Capilar – Regenera tu cabello</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">TRATAMIENTO PARA VARICES-ARAÑAS VASCULARES <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">TRATAMIENTO PARA LAS VARICES - ESCLEROTERAPIA</a>
+            </div>
+          </div>
+          <div class="has-subdrop">
+            <div class="drop-category">TRATAMIENTOS LIPOLITICOS <i class="fas fa-chevron-right"></i></div>
+            <div class="subdropdown">
+              <a href="#servicios">LIPO PREMIUM 360° Remodela, drena y define</a>
+              <a href="#servicios">LIPOPAPADA</a>
+              <a href="#servicios">SILUETA 360° Pack Remodelador Corporal Intensivo</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
       <li><a href="#testimonios">Reseñas</a></li>
       <li><a href="#horario">Horario</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -1678,7 +1985,171 @@
     <button class="mobile-menu-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
     <a href="#sobre-mi"    onclick="closeMenu()">Sobre mí</a>
     <a href="#equipo"      onclick="closeMenu()">Equipo</a>
-    <a href="#servicios"   onclick="closeMenu()">Servicios</a>
+
+    <!-- MEDICINA GENERAL móvil -->
+    <div>
+      <button class="mobile-cat-btn" onclick="toggleMobileCat('cat-general', this)">
+        MEDICINA GENERAL <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="mobile-submenu" id="cat-general">
+        <a href="#servicios" onclick="closeMenu()">CERTIFICADO MÉDICO OFICIAL</a>
+        <a href="#servicios" onclick="closeMenu()">CONSULTA DE MEDICINA GENERAL</a>
+        <a href="#servicios" onclick="closeMenu()">ELECTROCARDIOGRAMA (ECG)</a>
+        <a href="#servicios" onclick="closeMenu()">INYECCIÓN ENDOVENOSA</a>
+        <a href="#servicios" onclick="closeMenu()">INYECCIÓN INTRAMUSCULAR</a>
+        <a href="#servicios" onclick="closeMenu()">LAVADO DE OÍDOS</a>
+        <a href="#servicios" onclick="closeMenu()">NEBULIZACIÓN</a>
+        <a href="#servicios" onclick="closeMenu()">RECETAS MÉDICAS PROFESIONALES</a>
+      </div>
+    </div>
+
+    <!-- MEDICINA ESTÉTICA móvil -->
+    <div>
+      <button class="mobile-cat-btn" onclick="toggleMobileCat('cat-estetica', this)">
+        MEDICINA ESTÉTICA <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="mobile-submenu" id="cat-estetica">
+        <a href="#servicios" onclick="closeMenu()">CONSULTA DE MEDICINA ESTÉTICA</a>
+        <a href="#servicios" onclick="closeMenu()">Eliminación de Verrugas con Plasma</a>
+        <a href="#servicios" onclick="closeMenu()">Limpieza Profunda de Espalda</a>
+        <a href="#servicios" onclick="closeMenu()">TRATAMIENTO PARA EL ACNÉ</a>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;margin-top:6px;" onclick="toggleMobileCat('m-hialuronico',this)">ACIDO HIALURONICO <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-hialuronico">
+          <a href="#servicios" onclick="closeMenu()">AUMENTO DE PÓMULOS</a>
+          <a href="#servicios" onclick="closeMenu()">MARCACIÓN MANDIBULAR CON ÁCIDO HIALURÓNICO</a>
+          <a href="#servicios" onclick="closeMenu()">OJERAS HUNDIDAS (RELLENO CON ÁCIDO)</a>
+          <a href="#servicios" onclick="closeMenu()">Proyección y Remodelación de Glúteos Ácido Hialurónico</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-bioestim',this)">BIOESTIMULACIÓN DE COLÁGENO <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-bioestim">
+          <a href="#servicios" onclick="closeMenu()">AestheFill bioestimulador de Colágeno</a>
+          <a href="#servicios" onclick="closeMenu()">Facetem (1 vial de 1,6 ml)</a>
+          <a href="#servicios" onclick="closeMenu()">Facetem + skinbooster</a>
+          <a href="#servicios" onclick="closeMenu()">Radiesse (2 viales)</a>
+          <a href="#servicios" onclick="closeMenu()">Radiesse 1,5</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-laserfem',this)">DEPILACION LASER FEMENINA <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-laserfem">
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER FEMENINA ZONA L</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER FEMENINA ZONA M, SUELTAS</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER FEMENINA ZONA S, SUELTAS</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER FEMENINA ZONA XS, SUELTAS</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER MUJER CUERPO COMPLETO</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-lasermas',this)">DEPILACION LASER MASCULINA <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-lasermas">
+          <a href="#servicios" onclick="closeMenu()">DEPILACION LASER HOMBRE MEDIO CUERPO INFERIOR</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER HOMBRE CUERPO COMPLETO</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER HOMBRE MEDIO CUERPO SUPERIOR</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER MASCULINA ZONA L</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER MASCULINA ZONA M</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER MASCULINA ZONA S</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER MASCULINA ZONA XL</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-electro',this)">ELECTROESTIMULADOR <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-electro">
+          <a href="#servicios" onclick="closeMenu()">Electroestimulador (20 min)</a>
+          <a href="#servicios" onclick="closeMenu()">Electroestimulador (40 min)</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-exfol',this)">EXFOLIACION CORPORAL <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-exfol">
+          <a href="#servicios" onclick="closeMenu()">Exfoliación Corporal</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-hidrat',this)">HIDRATACION PROFUNDA <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-hidrat">
+          <a href="#servicios" onclick="closeMenu()">BIOREVITALIZANTE - BIOESTIMULANTE</a>
+          <a href="#servicios" onclick="closeMenu()">Exosomas</a>
+          <a href="#servicios" onclick="closeMenu()">Mesobotox</a>
+          <a href="#servicios" onclick="closeMenu()">Skinboosters™ Restylane</a>
+          <a href="#servicios" onclick="closeMenu()">SKINBOOSTER</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-limpieza',this)">LIMPIEZA FACIAL <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-limpieza">
+          <a href="#servicios" onclick="closeMenu()">Limpieza Facial Básica</a>
+          <a href="#servicios" onclick="closeMenu()">Limpieza Facial Enriquecida</a>
+          <a href="#servicios" onclick="closeMenu()">Limpieza Facial Profunda</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-madera',this)">MADEROTERAPIA <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-madera">
+          <a href="#servicios" onclick="closeMenu()">Maderoterapia Facial</a>
+          <a href="#servicios" onclick="closeMenu()">MADEROTERAPIA</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-masajes',this)">MASAJES <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-masajes">
+          <a href="#servicios" onclick="closeMenu()">Bono 5 sesiones Drenaje linfático zonas</a>
+          <a href="#servicios" onclick="closeMenu()">Drenaje linfático corporal</a>
+          <a href="#servicios" onclick="closeMenu()">Drenaje linfático facial</a>
+          <a href="#servicios" onclick="closeMenu()">Lifting facial</a>
+          <a href="#servicios" onclick="closeMenu()">Masaje deportivo</a>
+          <a href="#servicios" onclick="closeMenu()">MASAJE POSTOPERATORIO</a>
+          <a href="#servicios" onclick="closeMenu()">Masaje Reductivo</a>
+          <a href="#servicios" onclick="closeMenu()">Masaje Relajante Antiestrés</a>
+          <a href="#servicios" onclick="closeMenu()">MASAJES</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-meso',this)">MESOTERAPIA <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-meso">
+          <a href="#servicios" onclick="closeMenu()">Mesoterapia Facial (Intradérmica)</a>
+          <a href="#servicios" onclick="closeMenu()">MESOTERAPIA LIPOLÍTICA CORPORAL</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-micro',this)">MICRONEEDLING <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-micro">
+          <a href="#servicios" onclick="closeMenu()">Microneedling Facial – Renueva tu piel</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-pcarbon',this)">PEELING DE CARBONO <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-pcarbon">
+          <a href="#servicios" onclick="closeMenu()">HOLLYWOOD PEEL</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-pquim',this)">PEELING QUIMICO <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-pquim">
+          <a href="#servicios" onclick="closeMenu()">Peeling químico Fenol</a>
+          <a href="#servicios" onclick="closeMenu()">Peeling Químico</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-prp',this)">PRP FACTORES DE CRECIMIENTO <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-prp">
+          <a href="#servicios" onclick="closeMenu()">FACTORES DE CRECIMIENTO</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-radio',this)">RADIOFRECUENCIA-CAVITACION-VACUMTERAPIA <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-radio">
+          <a href="#servicios" onclick="closeMenu()">Cavitación y Radiofrecuencia</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-rellenos',this)">RELLENOS DERMICOS <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-rellenos">
+          <a href="#servicios" onclick="closeMenu()">AUMENTO DE LABIOS</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-serv',this)">SERVICIOS <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-serv">
+          <a href="#servicios" onclick="closeMenu()">ASEGURADORAS – CONSULTA MEDICINA GENERAL</a>
+          <a href="#servicios" onclick="closeMenu()">Bono 10 sesiones de drenajes linfáticos por zona</a>
+          <a href="#servicios" onclick="closeMenu()">CONSULTA PÉRDIDA DE PESO</a>
+          <a href="#servicios" onclick="closeMenu()">DEPILACIÓN LÁSER FEMENINA ZONA XS, SUELTAS</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-botox',this)">TRATAMIENDO ANTIARRUGAS - BOTOX <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-botox">
+          <a href="#servicios" onclick="closeMenu()">Entrecejo</a>
+          <a href="#servicios" onclick="closeMenu()">Nefertiti</a>
+          <a href="#servicios" onclick="closeMenu()">Patas de gallo</a>
+          <a href="#servicios" onclick="closeMenu()">Sonrisa gingival</a>
+          <a href="#servicios" onclick="closeMenu()">Tercio superior</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-capilar',this)">TRATAMIENTO CAPILAR <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-capilar">
+          <a href="#servicios" onclick="closeMenu()">EXOSOMAS CAPILAR</a>
+          <a href="#servicios" onclick="closeMenu()">Mesoterapia Capilar</a>
+          <a href="#servicios" onclick="closeMenu()">PRP Capilar – Regenera tu cabello</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-varices',this)">TRATAMIENTO PARA VARICES-ARAÑAS VASCULARES <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-varices">
+          <a href="#servicios" onclick="closeMenu()">TRATAMIENTO PARA LAS VARICES - ESCLEROTERAPIA</a>
+        </div>
+        <button class="mobile-cat-btn" style="font-size:0.75rem;" onclick="toggleMobileCat('m-lipo',this)">TRATAMIENTOS LIPOLITICOS <i class="fas fa-chevron-down"></i></button>
+        <div class="mobile-submenu" id="m-lipo">
+          <a href="#servicios" onclick="closeMenu()">LIPO PREMIUM 360° Remodela, drena y define</a>
+          <a href="#servicios" onclick="closeMenu()">LIPOPAPADA</a>
+          <a href="#servicios" onclick="closeMenu()">SILUETA 360° Pack Remodelador Corporal Intensivo</a>
+        </div>
+      </div>
+    </div>
+
     <a href="#testimonios" onclick="closeMenu()">Reseñas</a>
     <a href="#horario"     onclick="closeMenu()">Horario</a>
     <a href="#contacto"    onclick="closeMenu()">Contacto</a>
@@ -2539,6 +3010,11 @@
     // --- Mobile menu ---
     function openMenu()  { document.getElementById('mobileMenu').classList.add('open'); }
     function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+    function toggleMobileCat(id, btn) {
+      const sub = document.getElementById(id);
+      sub.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
 
     // --- Scroll reveal (Intersection Observer) ---
     const reveals = document.querySelectorAll('.reveal');
